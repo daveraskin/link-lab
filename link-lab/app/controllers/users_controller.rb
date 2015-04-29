@@ -1,12 +1,21 @@
 class UsersController < ApplicationController
 
+  def index
+     @posts = Post.all
+  end
+
   def new
 
   end
 
   def create
     @user = User.create(user_params)
+    if @user.id
     redirect_to login_path
+    else
+    flash[:danger] = "Credentials Invalid"
+    redirect_to signup_path
+    end
 
   end
 
