@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <h1> Welcome!  </h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Vote</th>
+        <th>Post</th>
+        <th>User</th>
+        <th>Score</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody><% @posts.each do |i| %>
+     <tr>
+      <td>
+        <%= bootstrap_form_for [i, @vote] do |u| %>
+        <%= u.hidden_field :value, value: "1" %>
+        <%= u.button "", class: "btn btn-primary btn-xs glyphicon glyphicon-arrow-up" %>
+        <% end %>
+        <%= bootstrap_form_for [i, @vote] do |u| %>
+        <%= u.hidden_field :value, value: "-1" %>
+        <%= u.button "", class: "btn btn-primary btn-xs glyphicon glyphicon-arrow-down" %>
+        <% end %>
+      </td>
+      <td> <%= link_to i.title, i.link %> </td>
+      <td> User </td>
+      <td>
+          <%= i.votes.reduce(0){|sum, v| sum + v.value} %>
+      </td>
+      <td>
+          <%= link_to "Comments", post_comments_path(i.id) %>
+      </td>
+    </tr>
+     <%end%>
+
+    </tbody>
+  </table>
+
+    </div>
+
+  </div>

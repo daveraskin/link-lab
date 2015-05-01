@@ -2,12 +2,17 @@ class PostsController < ApplicationController
 
      before_action :is_authenticated?, only: [:new]
 
-  def new
+  def index
+    @posts = Post.all
+    @vote = Vote.new
+  end
 
+  def new
+    @post = Post.new
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.create(post_params)
   end
 
   private

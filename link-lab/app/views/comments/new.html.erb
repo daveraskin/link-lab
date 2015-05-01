@@ -1,0 +1,9 @@
+<div class="container">
+
+   <%= bootstrap_form_for [@post, @comment] do |comment| %>
+        <%= comment.text_field :body, :placeholder => "Enter your comment here." %>
+        <%= comment.primary "Submit" %>
+   <% end %>
+
+
+</div>
