@@ -21,7 +21,12 @@ class VotesController < ApplicationController
       else
         flash[:danger] = "You already voted on that"
       end
+      if params.key?(:comment_id)
+      redirect_to post_comments_path
+    else params.key?(:post_id)
       redirect_to root_path
+    end
+
     end
   end
 

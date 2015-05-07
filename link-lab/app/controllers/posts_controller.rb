@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @user = User.all
     @vote = Vote.new
   end
 

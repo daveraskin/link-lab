@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :votes, :only => [:create]
     end
   end
+  resources :passwords, :except => [:index, :show]
 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
